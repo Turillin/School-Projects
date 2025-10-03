@@ -22,7 +22,7 @@ class ContactBook: #TODO: Polish the whole thing up and its good to go!!!!
     
     def view_all_contacts(self):
         for name, info in self.contacts.items():
-            print(name, info)
+            print(f"Name: {name} Phone: {info["Phone: "]} Email: {info["Email: "]}")
     
     def contact_search(self,name):
         if name in self.contacts:
