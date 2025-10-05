@@ -15,22 +15,33 @@
 class ContactBook: #TODO: Polish the whole thing up and its good to go!!!!
 
     def __init__(self):
-        self.contacts = {} # Dict will work as a list as well ?
+        self.contacts = {} # Dict will work as a list as well 
 
     def add_contact(self, name, number, email): # Have to add these variables to be able to append them (update: We cant append dicts, only list!!!)
-        self.contacts[name] = {"Phone: ": number, "Email: ": email} # TODO: add a list so that multiple names can exist in the book
+        # If no number is given the below line will be used
+        if not number.isdigit():
+            print("A number was not given")
+            return
+        
+        # Error handling if no @ is given 
+        if "@" not in email:
+            print("An email was not given")
+            return
+        
+        self.contacts[name] = {'Phone: ': number, 'Email: ': email}
+        print("Contact was added!")
     
     def view_all_contacts(self):
         for name, info in self.contacts.items():
-            print(f"Name: {name} Phone: {info["Phone: "]} Email: {info["Email: "]}")
+            print(f"Name: {name} Phone: {info['Phone: ']} Email: {info['Email: ']}")
     
     def contact_search(self,name):
         if name in self.contacts:
-            print(f"Phone: {self.contacts[name]["Phone: "]} Email: {self.contacts[name]["Email: "]}")
+            print(f"Phone: {self.contacts[name]['Phone: ']} Email: {self.contacts[name]['Email: ']}")
         else:
             print("There isnt such a name in your contacts")
 
-    def remove_contact(self,name): # TODO: include remove number and email as well 
+    def remove_contact(self,name): 
         if name in self.contacts:
             del self.contacts[name]
             print(f"{name} has been removed")
