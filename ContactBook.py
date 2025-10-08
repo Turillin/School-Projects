@@ -18,6 +18,11 @@ class ContactBook: #TODO: Polish the whole thing up and its good to go!!!!
         self.contacts = {} # Dict will work as a list as well 
 
     def add_contact(self, name, number, email): # Have to add these variables to be able to append them (update: We cant append dicts, only list!!!)
+        # If no name is given the below line will be used
+        if not name.strip():
+            print("No names were entered!")
+            return
+        
         # If no number is given the below line will be used
         if not number.isdigit():
             print("A number was not given")
@@ -89,8 +94,10 @@ while True:
             book.contacts[name]["Email: "] = new_email
         elif update_choice == "number":
             new_number = input("Type in the new number: ")
+            print("New number registered!")
         elif update_choice == "email":
             new_email = input("Type in the new email adress: ")
+            print("New email adress registered!")
         
     # Delete contact
     elif option == "5":
